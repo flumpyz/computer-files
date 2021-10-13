@@ -53,7 +53,7 @@
                     <a style="text-decoration: none;" href="" onclick="saveFile(event)">${file.name}</a>
                 </c:if>
                 <c:if test="${!file.isFile}">
-                    <a style="text-decoration: none;" href="">${file.name}/</a>
+                    <a style="text-decoration: none;" href="" onclick="moveOn(event)">${file.name}/</a>
                 </c:if>
             </td>
             <td style="width: 250px;">${file.size} B</td>
