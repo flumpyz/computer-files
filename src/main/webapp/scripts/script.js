@@ -1,12 +1,12 @@
 function saveFile(event) {
+    event.preventDefault();
+
     let originPath = window.location.origin;
     let fileName = event.target.innerHTML;
-    let path = getParameters().get("path");
-    let newPath = `${originPath}/download?path=${path}/${fileName}`;
+    let path = getParameters().get("path") ?? "/";
+    let updatedURL = `${originPath}/download?path=${path}${fileName}`;
 
-    console.log(window.location.host);
-    console.log(this);
-    console.log(newPath);
+    window.location.replace(updatedURL);
 }
 
 function updatePath() {
