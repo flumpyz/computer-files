@@ -25,7 +25,7 @@
             <img src="images/up.png" alt="" style="width: 20px; height: 20px;">
         </td>
         <td>
-            <a href="" style="text-decoration: none;">Вверх</a>
+            <a href="" style="text-decoration: none;" onclick="comeBack(event)">Вверх</a>
         </td>
         <td></td>
         <td></td>

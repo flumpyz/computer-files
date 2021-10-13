@@ -10,6 +10,7 @@ function saveFile(event) {
 }
 
 function updatePath() {
+    let path = getParameters().get("path");
 
 }
 
@@ -26,4 +27,24 @@ function getParameters() {
     })
 
     return parameterValuePair;
+}
+
+function comeBack(event) {
+    event.preventDefault();
+
+    let originPath = window.location.origin;
+    let path = getParameters().get("path");
+
+    let pathArray = path.split("/");
+    pathArray.pop();
+
+    let updatedPath;
+    if (pathArray.length > 1) {
+        updatedPath = pathArray.join("/");
+    } else {
+        updatedPath = "/";
+    }
+
+    let updatedURL = `${originPath}/files?path=${updatedPath}`;
+    window.location.replace(updatedURL);
 }
