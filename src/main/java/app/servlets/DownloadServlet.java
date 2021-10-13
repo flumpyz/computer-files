@@ -1,6 +1,5 @@
 package app.servlets;
 
-import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.FileInputStream;
@@ -13,7 +12,7 @@ public class DownloadServlet extends HttpServlet {
     private static final int BufferSize = 2048;
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String path = request.getParameter("path");
         String[] pathElements = path.split("/");
         String fileName = pathElements[pathElements.length - 1];

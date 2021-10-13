@@ -6,7 +6,6 @@
 <html>
 <head>
     <title>Files</title>
-    <link type="text/css" rel="stylesheet" href="styles/style.css">
 </head>
 <body>
 <h2>

@@ -9,11 +9,6 @@ function saveFile(event) {
     window.location.replace(updatedURL);
 }
 
-function updatePath() {
-    let path = getParameters().get("path");
-
-}
-
 function getParameters() {
     let parameters = window.location.search
         .substr(1)
