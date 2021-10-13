@@ -59,3 +59,12 @@ function moveOn(event) {
 
     window.location.replace(updatedURL);
 }
+
+function logOut(event) {
+    event.preventDefault();
+
+    let originPath = window.location.origin;
+    let updatedURL = `${originPath}/login`;
+
+    window.location.replace(updatedURL);
+}

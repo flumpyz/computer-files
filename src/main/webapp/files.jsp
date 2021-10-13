@@ -6,14 +6,27 @@
 <html>
 <head>
     <title>Files</title>
+    <link rel="stylesheet" href="styles/filesStyle.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
 </head>
 <body>
-<h2>
-    <%
-        String today = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss").format(new Date());
-        out.println(today);
-    %>
-</h2>
+<div class="top-line">
+    <div>
+        <h2>
+            <%
+                String today = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss").format(new Date());
+                out.println(today);
+            %>
+        </h2>
+    </div>
+    <div>
+        <button onclick="logOut(event)">
+            <img src="images/close.svg">
+        </button>
+    </div>
+</div>
 <h2>
     ${directory}
 </h2>
