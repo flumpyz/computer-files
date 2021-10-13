@@ -50,7 +50,7 @@
             </td>
             <td style="width: 250px;">
                 <c:if test="${file.isFile}">
-                    <a style="text-decoration: none;" href="">${file.name}</a>
+                    <a style="text-decoration: none;" href="" onclick="saveFile(event)">${file.name}</a>
                 </c:if>
                 <c:if test="${!file.isFile}">
                     <a style="text-decoration: none;" href="">${file.name}/</a>
@@ -61,5 +61,6 @@
         </tr>
     </c:forEach>
 </table>
+<script rel="script" src="scripts/script.js"></script>
 </body>
 </html>

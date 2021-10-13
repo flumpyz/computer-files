@@ -13,16 +13,23 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-@WebServlet("/")
+@WebServlet(name = "filesServlet", urlPatterns = "/files")
 public class MainServlet extends HttpServlet {
     FilesService filesService = new FilesService();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Path root = Paths.get(System.getProperty("user.dir")).getFileSystem()
-                .getRootDirectories().iterator().next();
-        req.setAttribute("directory", root);
-        Iterable<FileModel> files = filesService.listAllFiles(String.valueOf(root));
+        String path = req.getParameter("path");
+        String formatPath = "";
+
+        if (path != null) {
+            formatPath = path;
+        } else {
+            formatPath = "/";
+        }
+
+        req.setAttribute("directory", formatPath);
+        Iterable<FileModel> files = filesService.listAllFiles(formatPath);
         req.setAttribute("files", files);
         req.getRequestDispatcher("files.jsp").forward(req, resp);
     }
