@@ -39,7 +39,7 @@ public class LoginServlet extends HttpServlet {
                 String location = "http://localhost:8080/files?path=/";
                 response.sendRedirect(location);
             } else {
-                request.getRequestDispatcher("registrationPage.jsp").forward(request, response);
+                response.sendRedirect("/registration");
             }
         }
     }

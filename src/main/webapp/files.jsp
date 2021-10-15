@@ -23,7 +23,7 @@
     </div>
     <div>
         <button onclick="logOut(event)">
-            <img src="images/close.svg">
+            <img src="images/logout.svg">
         </button>
     </div>
 </div>
