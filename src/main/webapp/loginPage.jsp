@@ -10,18 +10,28 @@
 </head>
 <body>
 <main>
-    <div>
+    <div class="main-title">
         <h1>
             ВОЙТИ
         </h1>
     </div>
-    <label>Логин :
-        <input type="text" placeholder="Введите ваш логин..." id="come_in_login_field">
-    </label>
-    <label>Пароль :
-        <input type="password" placeholder="Введите ваш пароль..." id="come_in_password_field">
-    </label>
-    <input type="submit" class="come-in-button" value="ВОЙТИ" onclick="comeIn(event)">
+    <form action="login" method="post">
+        <div class="field">
+            <label for="login">Логин :</label>
+            <input type="text" placeholder="Введите ваш логин..." id="login" name="login">
+        </div>
+
+        <div class="field">
+            <label for="password">Пароль :</label>
+            <input type="text" placeholder="Введите ваш пароль..." id="password" name="password">
+        </div>
+
+        <div class="form-submit-button">
+            <button type="submit" class="come-in-button">
+                ВОЙТИ
+            </button>
+        </div>
+    </form>
     <button class="registration-button" onclick="goToRegistration(event)">
         <img src="images/registration.svg">
         Регистрация

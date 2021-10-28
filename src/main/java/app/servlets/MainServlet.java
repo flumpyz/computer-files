@@ -20,6 +20,8 @@ public class MainServlet extends HttpServlet {
         this.personsService = personsService;
     }
 
+    // TODO: implement a normal path check,
+    //  since you can return back through a relative path
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();

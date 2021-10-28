@@ -7,6 +7,8 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,33 +21,37 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getRequestDispatcher("loginPage.jsp").forward(request, response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         String sessionId = session.getId();
 
         String login = request.getParameter("login");
         String password = request.getParameter("password");
 
-        if (login == null || password == null) {
+        if (login.length() <= 0 || password.length() <= 0) {
             if (personsService.hasSession(sessionId)) {
                 personsService.removeSession(sessionId);
             }
             request.getRequestDispatcher("loginPage.jsp").forward(request, response);
         } else {
-            if (personsService.has(login, password)) {
-                if (!personsService.hasSession(sessionId)) {
-                    personsService.createSession(sessionId, personsService.get(login, password));
-                }
+            try {
+                if (personsService.has(login, password)) {
+                    if (!personsService.hasSession(sessionId)) {
+                        personsService.createSession(sessionId, personsService.get(login, password));
+                    }
 
-                String location = "http://localhost:8080/files?path=/";
-                response.sendRedirect(location);
-            } else {
-                response.sendRedirect("/registration");
+                    String location = "http://localhost:8080/files?path=/";
+                    response.sendRedirect(location);
+                } else {
+                    response.sendRedirect("/registration");
+                }
+            } catch (SQLException e) {
+                response.sendError(HttpServletResponse.SC_BAD_REQUEST);
             }
         }
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
     }
 }

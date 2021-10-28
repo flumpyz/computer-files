@@ -31,11 +31,11 @@ function register(event) {
 
     let originPath = window.location.origin;
 
-    let login = document.getElementById("login_field").value;
-    let password = document.getElementById("password_field").value;
-    let email = document.getElementById("email_field").value;
+    let login = document.getElementById("login_field").value.trim();
+    let password = document.getElementById("password_field").value.trim();
+    let email = document.getElementById("email_field").value.trim();
 
-    if (login !== null && password !== null && email !== null) {
+    if (login.length > 0 && password.length > 0 && email.length > 0) {
         fetch(`${originPath}/registration?login=${login}&password=${password}&email=${email}`)
             .then(response =>  {
                 if (response.redirected === true) {

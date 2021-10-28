@@ -8,9 +8,26 @@ main {
     font-family: 'Montserrat', sans-serif;
 }
 
-label {
-    margin-bottom: 40px;
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
+    margin-bottom: 0;
+}
+
+div.field {
+    padding-bottom: 15px;
+}
+
+div.field label {
+    display: block;
+    float: left;
+    width: 150px;
+    height: 20px;
+}
+
+label {
     font-size: 22px;
 }
 
@@ -66,13 +83,42 @@ input::placeholder {
 }
 
 .come-in-button, .register-button {
+    width: 350px;
+    height: 40px;
+
+    margin-top: 40px;
+
+    border-radius: 10px;
     background: #91CBF2;
 
     border: 2px solid #5DB3EB;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+
+    outline: none;
 }
 
 .come-in-button:hover, .register-button:hover {
+    width: 350px;
+    height: 40px;
+
+    margin-top: 40px;
+
+    border-radius: 10px;
     background: #76BFF0;
 
     border: 2px solid #48A8E9;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+
+    outline: none;
+}
+
+.main-title {
+    margin-bottom: 40px;
+}
+
+.form-submit-button {
+    display: flex;
+    justify-content: center;
 }

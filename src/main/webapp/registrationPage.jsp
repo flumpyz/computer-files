@@ -1,5 +1,7 @@
+<%--@elvariable id="message" type=""--%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html; charset=UTF-8" language="java" pageEncoding="utf-8"%>
+<!DOCTYPE html>
 <html>
 <head>
     <title>Login Page</title>
@@ -10,24 +12,45 @@
 </head>
 <body>
 <main>
-    <div>
+    <div class="main-title">
         <h1>
             ЗАРЕГИСТРИРОВАТЬСЯ
         </h1>
     </div>
-    <label>Логин :
-        <input type="text" placeholder="Введите ваш логин..." id="login_field">
-    </label>
-    <label>Пароль :
-        <input type="password" placeholder="Введите ваш пароль..." id="password_field">
-    </label>
-    <label>E-mail :
-        <input type="email" placeholder="Введите ваш email..." id="email_field">
-    </label>
-    <input type="submit" class="register-button" value="ЗАРЕГИСТРИРОВАТЬСЯ" onclick="register(event)">
+    <form action="registration" method="post">
+        <div class="field">
+            <label for="login">Логин :</label>
+            <input type="text" placeholder="Введите ваш логин..." id="login" name="login">
+        </div>
+
+        <div class="field">
+            <label for="password">Пароль :</label>
+            <input type="password" placeholder="Введите ваш пароль..." id="password" name="password">
+        </div>
+
+        <div class="field">
+            <label for="email">E-mail :</label>
+            <input type="email" placeholder="Введите ваш email..." id="email" name="email">
+        </div>
+
+        <div class="form-submit-button">
+            <button type="submit" class="register-button">
+                ЗАРЕГИСТРИРОВАТЬСЯ
+            </button>
+        </div>
+    </form>
     <button class="move-back-button" onclick="goToComeIn(event)">
         У меня уже есть аккаунт
     </button>
+    <div>
+        <h2>
+            <c:if test="${message != null}">
+                <p>
+                        ${message}
+                </p>
+            </c:if>
+        </h2>
+    </div>
 </main>
 <script rel="script" src="scripts/login.js"></script>
 </body>
