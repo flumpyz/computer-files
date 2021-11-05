@@ -1,5 +1,6 @@
 package app.servlets;
 
+import app.database.DBException;
 import app.models.PersonModel;
 import app.services.PersonsService;
 
@@ -49,7 +50,7 @@ public class LoginServlet extends HttpServlet {
                 } else {
                     response.sendRedirect("/registration");
                 }
-            } catch (SQLException e) {
+            } catch (SQLException | DBException e) {
                 response.sendError(HttpServletResponse.SC_BAD_REQUEST);
             }
         }

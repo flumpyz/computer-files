@@ -1,5 +1,6 @@
 package app.servlets;
 
+import app.database.DBException;
 import app.models.PersonModel;
 import app.services.PersonsService;
 
@@ -65,7 +66,7 @@ public class RegistrationServlet extends HttpServlet {
                         }
                     }
                 }
-            } catch (SQLException e) {
+            } catch (SQLException | DBException e) {
                 response.sendError(HttpServletResponse.SC_BAD_REQUEST);
             }
         }

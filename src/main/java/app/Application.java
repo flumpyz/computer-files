@@ -1,10 +1,16 @@
 package app;
 
+import app.database.DatabaseService;
+import app.database.entities.User;
 import app.services.PersonsService;
 import app.servlets.LoginServlet;
 import app.servlets.MainServlet;
 import app.servlets.RegistrationServlet;
 import com.mysql.jdbc.Driver;
+import org.hibernate.SessionFactory;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.service.ServiceRegistry;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
@@ -19,17 +25,9 @@ public class Application implements ServletContextListener {
     public void contextInitialized(ServletContextEvent sce) {
         ServletContext context = sce.getServletContext();
 
-        String connectionString = "jdbc:mysql://localhost:3306/?user=root&password=admin1234";
-        Connection connection = null;
-        try {
-            Driver driver = new com.mysql.jdbc.Driver();
-            DriverManager.registerDriver(driver);
-            connection = DriverManager.getConnection(connectionString);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        DatabaseService databaseService = new DatabaseService();
 
-        PersonsService personsService = new PersonsService(connection);
+        PersonsService personsService = new PersonsService(databaseService);
 
         context.addServlet("files", new MainServlet(personsService)).addMapping("/files");
         context.addServlet("login", new LoginServlet(personsService)).addMapping("/login");
